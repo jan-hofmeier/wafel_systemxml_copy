@@ -6,7 +6,7 @@
 #include "setup.h"
 
 void copy_sysprod(int fd){
-    int res = copy_file(fd, "/vol/sdcard/sys_prod.xml", "/vol/system/sys/config/sys_prod.xml");
+    int res = copy_file(fd, "/vol/sdcard/system.xml", "/vol/system/sys/config/system.xml");
     debug_printf("copy_file: %x\n", res);
 }
 
@@ -55,7 +55,7 @@ u32 setup_main(void* arg){
     copy_sysprod(fsaHandle);
 
     flush_slc(fsaHandle);
-    ret = FSA_Remove(fsaHandle, "/vol/sdcard/wiiu/ios_plugins/wafel_sysprod_copy.ipx");
+    ret = FSA_Remove(fsaHandle, "/vol/sdcard/wiiu/ios_plugins/wafel_systemxml_copy.ipx");
     debug_printf("FSA_Remove: %X\n", ret);
 
     ret = FSA_Unmount(fsaHandle, "/vol/sdcard", 1);
